@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+@extends('layouts.app')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+@section('content')
 
-    </head>
-    <body>
-        <div class="container">
-          <h1>Post Page {{$id}} {{$name}} {{$password}}</h1>
-        </div>
-    </body>
-</html>
+  <h1>Post Page {{$id}} {{$name}} {{$password}}</h1>
+
+@stop
+
+@section('footer')
+  <h2>FooterDooter</h2>
+@stop
