@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('/about', function() {
 //     return "HI about page!";
@@ -35,6 +35,18 @@ Route::get('/', function () {
 // Route::get('/post/{id}', 'PostsController@index');
 
 // Route::resource('posts', 'PostsController');
-Route::get('/contact', 'PostsController@contact');
+// Route::get('/contact', 'PostsController@contact');
+//
+// Route::get('post/{id}/{name}/{password}', 'PostsController@show_post');
 
-Route::get('post/{id}/{name}/{password}', 'PostsController@show_post');
+// Route::get('/insert', function(){
+//   DB::insert('insert into posts(title, body) values(?,?)', ['PHP With Laravel', 'Laravel is great!']);
+// });
+
+Route::get('/read', function() {
+  $results = DB::select('select * from posts where id = ?', ['1']);
+  return $results;
+  // foreach($results as $post) {
+  //   return $post->title;
+  // }
+});
