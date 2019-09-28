@@ -81,6 +81,19 @@ Route::get('/findwhere', function() {
 });
 
 Route::get('/findmore', function() {
-  $posts = Post::findOrFail(1);)
+  $posts = Post::findOrFail(1);
   return $posts;
+});
+
+Route::get('/basicinsert', function(){
+  $post = new Post;
+  $post->title = 'Is Laravel better than Ruby On Rails?';
+  $post->content = 'It seems like a lot more typing for now';
+  $post->save();
+});
+
+Route::get('/basicupdate', function(){
+  $post = Post::find(3);
+  $post->title = 'Im updating the title';
+  $post->save();
 });
