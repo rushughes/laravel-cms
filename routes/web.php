@@ -123,3 +123,12 @@ Route::get('/softdelete', function() {
   $post = Post::find(7);
   $post->delete();
 });
+
+Route::get('/readsoftdelete', function() {
+  //$post = Post::find(7);
+  //$post = Post::withTrashed()->where('id', 7)->get();
+  //$post = Post::onlyTrashed()->where('id', 7)->get();
+  //$post = Post::onlyTrashed()->where('id', 8)->get();
+  $post = Post::onlyTrashed()->get();
+  return $post;
+});
