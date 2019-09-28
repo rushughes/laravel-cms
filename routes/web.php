@@ -43,10 +43,15 @@
 //   DB::insert('insert into posts(title, body) values(?,?)', ['PHP With Laravel', 'Laravel is great!']);
 // });
 
-Route::get('/read', function() {
-  $results = DB::select('select * from posts where id = ?', ['1']);
-  return $results;
-  // foreach($results as $post) {
-  //   return $post->title;
-  // }
+// Route::get('/read', function() {
+//   $results = DB::select('select * from posts where id = ?', ['1']);
+//   return $results;
+//   // foreach($results as $post) {
+//   //   return $post->title;
+//   // }
+// });
+
+Route::get('/update', function() {
+  $updated = DB::update('update posts set title = "Potato" where id = 1');
+  return $updated;
 });
