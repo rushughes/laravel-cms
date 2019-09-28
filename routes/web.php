@@ -105,3 +105,16 @@ Route::get('/create', function(){
 Route::get('/update', function() {
   Post::where('id', 3)->where('is_admin', 0)->update(['title'=>'NEW PHP TITLE']);
 });
+
+Route::get('/delete', function() {
+  $post = Post::find(3);
+  $post->delete();
+});
+
+Route::get('/delete2', function() {
+  $post = Post::destroy(4);
+});
+
+Route::get('/delete3', function() {
+  $post = Post::destroy([5,6]);
+});
