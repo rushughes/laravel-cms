@@ -101,3 +101,7 @@ Route::get('/basicupdate', function(){
 Route::get('/create', function(){
   Post::create(['title'=>'The Create Title', 'content'=>'WOW I am learning']);
 });
+
+Route::get('/update', function() {
+  Post::where('id', 3)->where('is_admin', 0)->update(['title'=>'NEW PHP TITLE']);
+});
