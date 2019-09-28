@@ -39,19 +39,22 @@
 //
 // Route::get('post/{id}/{name}/{password}', 'PostsController@show_post');
 
-// Route::get('/insert', function(){
-//   DB::insert('insert into posts(title, body) values(?,?)', ['PHP With Laravel', 'Laravel is great!']);
-// });
+Route::get('/insert', function(){
+  DB::insert('insert into posts(title, content) values(?,?)', ['PHP With Laravel', 'Laravel is great!']);
+});
 
-// Route::get('/read', function() {
-//   $results = DB::select('select * from posts where id = ?', ['1']);
-//   return $results;
-//   // foreach($results as $post) {
-//   //   return $post->title;
-//   // }
-// });
+Route::get('/read', function() {
+  $results = DB::select('select * from posts where id = ?', ['2']);
+  return $results;
+});
 
 Route::get('/update', function() {
-  $updated = DB::update('update posts set title = "Potato" where id = 1');
+  $updated = DB::update('update posts set title = "Potato" where id = 2');
   return $updated;
+});
+
+
+Route::get('/delete', function() {
+  $deleted = DB::delete('delete from posts where id = ?', [2]);
+  return $deleted;
 });
