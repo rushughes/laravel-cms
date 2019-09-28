@@ -38,23 +38,49 @@
 // Route::get('/contact', 'PostsController@contact');
 //
 // Route::get('post/{id}/{name}/{password}', 'PostsController@show_post');
+//
+// Route::get('/insert', function(){
+//   DB::insert('insert into posts(title, content) values(?,?)', ['PHP With Laravel', 'Laravel is great!']);
+// });
+//
+// Route::get('/read', function() {
+//   $results = DB::select('select * from posts where id = ?', ['2']);
+//   return $results;
+// });
+//
+// Route::get('/update', function() {
+//   $updated = DB::update('update posts set title = "Potato" where id = 2');
+//   return $updated;
+// });
+//
+//
+// Route::get('/delete', function() {
+//   $deleted = DB::delete('delete from posts where id = ?', [2]);
+//   return $deleted;
+// });
 
-Route::get('/insert', function(){
-  DB::insert('insert into posts(title, content) values(?,?)', ['PHP With Laravel', 'Laravel is great!']);
-});
+use App\Post;
 
 Route::get('/read', function() {
-  $results = DB::select('select * from posts where id = ?', ['2']);
-  return $results;
+  $posts = Post::all();
+  foreach($posts as $post) {
+    return $post->title;
+  }
 });
 
-Route::get('/update', function() {
-  $updated = DB::update('update posts set title = "Potato" where id = 2');
-  return $updated;
+Route::get('/find', function() {
+  $post = Post::find(3);
+  return $post;
 });
 
+Route::get('/findwhere', function() {
+  $posts = Post::where('id', 3)->orderBy('id', 'desc')
+               ->take(10)
+               ->get();
+  return $posts;
+});
 
-Route::get('/delete', function() {
-  $deleted = DB::delete('delete from posts where id = ?', [2]);
-  return $deleted;
+Route::get('/findmore', function() {
+  $posts = Post::findOrFail(1);)
+  return $posts;
 });
