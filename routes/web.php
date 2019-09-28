@@ -97,3 +97,7 @@ Route::get('/basicupdate', function(){
   $post->title = 'Im updating the title';
   $post->save();
 });
+
+Route::get('/create', function(){
+  Post::create(['title'=>'The Create Title', 'content'=>'WOW I am learning']);
+});
