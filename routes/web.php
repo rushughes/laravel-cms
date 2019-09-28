@@ -136,3 +136,9 @@ Route::get('/readsoftdelete', function() {
 Route::get('/restore', function() {
   Post::withTrashed()->restore();
 });
+
+Route::get('/forcedelete', function() {
+  Post::onlyTrashed()->forceDelete();
+  Post::withTrashed()->where('id', 10)->forceDelete();
+  Post::where('id', 11)->forceDelete();
+});
