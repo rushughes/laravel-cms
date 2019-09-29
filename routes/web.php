@@ -160,3 +160,10 @@ Route::get('/posts', function(){
     echo $post->title . "<br /";
   }
 });
+
+Route::get('/user/{id}/role', function($id) {
+  $user = User::find($id);
+  foreach($user->roles as $role) {
+    return $role->name;
+  }
+});
