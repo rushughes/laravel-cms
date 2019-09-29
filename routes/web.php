@@ -3,6 +3,7 @@
 use App\Country;
 use App\Photo;
 use App\Post;
+use App\Tag;
 use App\User;
 
 /*
@@ -208,5 +209,19 @@ Route::get('/post/{id}/tags', function($id) {
   $post = Post::find($id);
   foreach ($post -> tags as $tag) {
     echo $tag->name . '<br />';
+  }
+});
+
+Route::get('/tag/post/{id}', function($id) {
+  $tag = Tag::find($id);
+  foreach ($tag -> posts as $post) {
+    echo $post->title . '<br />';
+  }
+});
+
+Route::get('/tag/video/{id}', function($id) {
+  $tag = Tag::find($id);
+  foreach ($tag -> videos as $video) {
+    echo $video->name . '<br />';
   }
 });
