@@ -1,5 +1,6 @@
 <?php
 
+use App\Country;
 use App\Post;
 use App\User;
 
@@ -157,7 +158,7 @@ Route::get('/post/{id}/user', function($id){
 Route::get('/posts', function(){
   $user = User::find(1);
   foreach($user->posts as $post) {
-    echo $post->title . "<br /";
+    echo $post->title . '<br />';
   }
 });
 
@@ -173,5 +174,12 @@ Route::get('user/{id}/pivot', function($id) {
 
   foreach($user->roles as $role) {
     echo $role->pivot->created_at;
+  }
+});
+
+Route::get('/user/country/{id}', function($id) {
+  $country = Country::find($id);
+  foreach($country->posts as $post) {
+    echo $post->title . '<br />';
   }
 });
