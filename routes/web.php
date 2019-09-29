@@ -203,3 +203,10 @@ Route::get('/photo/{id}/post', function($id) {
   $photo = Photo::findOrFail($id);
   return $photo->imageable;
 });
+
+Route::get('/post/{id}/tags', function($id) {
+  $post = Post::find($id);
+  foreach ($post -> tags as $tag) {
+    echo $tag->name . '<br />';
+  }
+});
