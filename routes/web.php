@@ -183,3 +183,17 @@ Route::get('/user/country/{id}', function($id) {
     echo $post->title . '<br />';
   }
 });
+
+Route::get('/user/{id}/photos', function($id) {
+  $user = User::find($id);
+  foreach($user->photos as $photo) {
+    return $photo;
+  }
+});
+
+Route::get('/post/{id}/photos', function($id) {
+  $post = Post::find($id);
+  foreach($post->photos as $photo) {
+    echo $photo->path . '<br />';
+  }
+});
